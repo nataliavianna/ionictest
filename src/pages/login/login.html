@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Login</ion-title>
+  <ion-navbar hideBackButton>
+    <ion-title class="title">Login</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -9,17 +9,20 @@
 
   <ion-item>
     <ion-label floating>Username</ion-label>
-    <ion-input type="text" #username></ion-input>
+    <ion-input type="text" (input)="userFromForm = $event.target.value" class="username" #username></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label floating>Password</ion-label>
-    <ion-input type="password" #password></ion-input>
+    <ion-input type="password" (keyup)="passFromForm = $event.target.value" class="password" #password></ion-input>
   </ion-item>
 
 </ion-list>
 
 <div padding>
-  <button block ion-button (click)="signInUser()" item-left>Sign In</button>
+  <button block ion-button round  (click)="signInUser()" item-left>Sign In</button>
+</div>
+<div padding>
+  <button block ion-button color="light" id="returnbtn" round (click)="goHome()" item-left>Return</button>
 </div>
 </ion-content>

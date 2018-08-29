@@ -1,12 +1,18 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Social Network</ion-title>
-  </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <div id="topButtons">
-    <button ion-button (click)="signIn()" item-left>Sign In</button>
-    <button ion-button (click)="register()" item-left>Register</button>
+<ion-content padding class="background-content">
+		<img width="auto" height="auto" class="logo" src="http://www.2taps.com.br/default/img/logo.png">
+
+
+	<div id="topButtons" padding>
+	    <button ion-button color="light" round (click)="signIn()" item-left>Sign In</button>
+	    
+  	</div>
+
+
+
+<div id="topButtons" padding>
+  	<button ion-button color="light" round (click)="register()" item-left>Register</button>
   </div>
 </ion-content>

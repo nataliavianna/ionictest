@@ -1,9 +1,29 @@
 page-home {
 	#topButtons {
-	display:flex;
-	flex-direction: row;
+		display:flex;
+		flex-direction: row;
 	}
 	#topButtons button {
-	flex:1;
+		flex:1;
+	}
+	.title{
+		text-align: center;
+	}
+	.background-content{
+		background-color: #008b8b;
+	}
+	.toolbar-background-md{
+		background-color: #008b8b;
+	}
+	.logo{
+		text-align:center;
+		align-items:center;
+	}
+	.scroll-content{
+		text-align: center;
+		img {
+			margin-top: 10%;
+			margin-bottom:10%;
+		}
 	}
 }

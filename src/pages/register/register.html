@@ -1,26 +1,35 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Create account</ion-title>
+  <ion-navbar hideBackButton>
+    <ion-title class="title">Create account</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+ 
+ <form [formGroup]="formgroup">
   <ion-list>
-
   <ion-item>
     <ion-label floating>Username</ion-label>
-    <ion-input type="text" #username></ion-input>
+    <ion-input [value]="userFromForm" type="text" formControlName="formname" (input)="userFromForm = $event.target.value" #username></ion-input>
+
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Email</ion-label>
+    <ion-input  [value]="emailFromForm" type="email" formControlName="formemail" (input)="emailFromForm = $event.target.value" #email></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label floating>Password</ion-label>
-    <ion-input type="password" #password></ion-input>
+    <ion-input  [value]="passFromForm" type="password" formControlName="formpassword" (keyup)="passFromForm = $event.target.value" #password></ion-input>
   </ion-item>
-
 </ion-list>
-
+</form>
 <div padding>
-  <button block ion-button (click)="registerUser()" item-left>Regsister</button>
+  <button block ion-button round (click)="registerUser()">Register</button>
 </div>
-</ion-content>
+<div padding>
+  <button block ion-button color="light" id="returnbtn" round (click)="goHome()">Return</button>
+</div>
 
+</ion-content>

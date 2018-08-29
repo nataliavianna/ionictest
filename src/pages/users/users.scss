@@ -1,0 +1,21 @@
+page-users {
+	table{
+		width:100%;
+		text-align:center;
+	}
+	thead {
+		border-bottom :1px solid #008b8b;
+	}
+	td, th{
+		padding: 10px;
+	}
+	tr:nth-child(odd){
+		background: #f9f9f9;
+	}
+	.toolbar-title-md{
+		color: #008b8b!important;
+	}
+	.bar-button-dark-md, .bar-button-clear-md-dark, .bar-button-md-dark{
+	color:grey!important;
+	}
+}

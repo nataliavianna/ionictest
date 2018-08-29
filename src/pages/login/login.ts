@@ -1,12 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { Http, Headers } from '@angular/http';
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { HomePage } from '../home/home';
+import { UsersPage } from '../users/users';
+
 
 @IonicPage()
 @Component({
@@ -15,18 +13,47 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-@ViewChild('username') user;
-@ViewChild('password') password;
+	userFromForm='';
+	passFromForm='';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+	@ViewChild('username') user;
+	@ViewChild('password') password;
+
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, private toastCtrl: ToastController, private http:Http) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  signInUser () {
-  console.log('Would sign in with', this.user.value, this.password.value)
+   usersRedirect () {
+  	this.navCtrl.push(UsersPage);
   }
 
+  signInUser () {
+	let headers = new Headers();
+	headers.append("content-type","application/json");
+	var params = JSON.stringify({
+	  user:this.userFromForm,
+	  password:this.passFromForm
+	});
+	this.http.post("http://18.219.243.249/login.php", params, {headers:headers}).subscribe(data => {
+		var respy = JSON.parse(data["_body"]);
+		if (respy.resp == "true") {
+          this.navCtrl.push(UsersPage);
+        } else {
+          let toast = this.toastCtrl.create({
+	    	message: 'Invalid username or password',
+	    	duration: 3000,
+	    	position: 'top',
+	  		});
+	  		toast.present();
+        }
+	});
+  }
+
+goHome(){
+	this.navCtrl.push(HomePage);
+}
+ 
 }

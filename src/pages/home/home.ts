@@ -3,6 +3,7 @@ import { NavController, AlertController } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
 import { RegisterPage } from '../register/register';
+import { UsersPage } from '../users/users';
 
 
 @Component({
@@ -24,5 +25,9 @@ export class HomePage {
 
   register() {
   	this.navCtrl.push(RegisterPage);
+  }
+
+  usersList() {
+    this.navCtrl.push(UsersPage);
   }
 }
